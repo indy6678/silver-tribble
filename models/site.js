@@ -2,9 +2,9 @@ const { DataTypes, Model } = require('sequelize');
 // import database connection
 const sequelize = require('../config/connection');
 
-class Post extends Model {}
+class Site extends Model {}
 
-Post.init(
+Site.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -12,12 +12,12 @@ Post.init(
             primaryKey: true,
             autoIncrement: true
         },
-        title: {
+        website: {
             type: DataTypes.STRING,
             allowNull: false
         },
         user_id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             references: {
                 model: 'user',
                 key: 'id'
@@ -32,8 +32,8 @@ Post.init(
         // use underscore instead of camelcase
         underscored: true,
         // forces the model name to stay lowercase in the database
-        modelName: 'post'
+        modelName: 'site'
     }
 );
 
-module.exports = Post;
+module.exports = Site;

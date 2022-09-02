@@ -1,6 +1,6 @@
-const User = require("../models/user");
-
 const router = require("express").Router();
+const { User } = require("../models");
+
 // const sequelize = require('../config/connection')
 
 // test route for config validation
@@ -22,19 +22,14 @@ router.get("/", (req, res) => {
     });
 });
 
-// Get to show an individual user by id
+// GET to show an individual user by id
 router.get("/:id", (req, res) => {
   User.findOne({
     attributes: { exclude: ["password"] },
     where: {
       id: req.params.id,
     },
-    include: [
-      {
-        model: User,
-        attributes: ["id", "email", "username"],
-      },
-    ],
+    attributes: ['id', 'email', 'username'],
   })
     .then((dbUserData) => {
       if (!dbUserData) {
@@ -48,6 +43,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
+//Post to create a new user
 router.post("/", (req, res) => {
   User.create({
     email: req.body.email,
@@ -60,5 +56,25 @@ router.post("/", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+//DELETE to delete a selected user
+router.delete('/:id', (req, res) => {
+    User.destroy({
+        where: {
+            id: req.params.id,
+        },
+    })
+    .then((dbUserData) => {
+        if(!dbUserData) {
+            res.status(404).json({ message: "No user was found with that id"})
+            return;
+        }
+        res.json(dbUserData);
+    })
+    .catch((err)=> {
+        // console.log(err);
+        res.status(500).json(err);
+    })
+})
 
 module.exports = router;
