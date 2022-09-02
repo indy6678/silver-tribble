@@ -8,19 +8,7 @@ const { User, Site } = require("../models");
 //     res.json({message: 'here we are!'});
 // })
 
-// GET to show all websites
-router.get("/", (req, res) => {
-  Site.findAll({
-    attributes: ['id', 'website'],
-  })
-    .then((dbUserData) => {
-      // console.log(dbUserData);
-      res.json(dbUserData);
-    })
-    .catch((err) => {
-      res.status(500).json(err);
-    });
-});
+
 
 // GET to show an individual user by id
 // router.get("/:id", (req, res) => {
