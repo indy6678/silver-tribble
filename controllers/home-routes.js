@@ -4,10 +4,9 @@ const { User, Site } = require("../models");
 // const sequelize = require('../config/connection')
 
 // test route for config validation
-// router.get('/', (req, res) => {
-//     res.json({message: 'here we are!'});
-// })
-
+router.get('/', (req, res) => {
+    res.json({message: 'here we are!'});
+})
 
 
 // GET to show an individual user by id
