@@ -19,6 +19,16 @@ User.init(
             primaryKey: true,
             autoIncrement: true,
         },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            // to keep from duplicating emails
+            unique: true,
+            validate: {
+                // test to verify that the entry is an email
+                isEmail: true
+            }
+        },
         username: {
             type: DataTypes.INTEGER,
             allowNull: false
