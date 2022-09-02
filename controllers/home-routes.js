@@ -5,7 +5,7 @@ const { User, Site } = require("../models");
 
 // test route for config validation
 router.get('/', (req, res) => {
-    res.json({message: 'here we are!'});
+    res.send(<h1>Here we are!</h1>);
 })
 
 
