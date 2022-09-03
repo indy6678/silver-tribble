@@ -16,7 +16,13 @@ async function signupFormHandler(event) {
                 password
             }),
             headers: {'Content-Type': 'application/json'}
-        }).then((response)=> {console.log(response)})
+        })
+        
+        if(response.ok) {
+            console.log('Eureka!')
+        } else {
+            alert('response.statusText');
+        }
     }
 }
 
