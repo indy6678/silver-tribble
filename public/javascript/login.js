@@ -6,6 +6,7 @@ async function signupFormHandler(event) {
     const username = document.querySelector('#un-signup').value.trim();
     const email = document.querySelector('#e-signup').value.trim();
     const password = document.querySelector('#pw-signup').value.trim();
+    functionconsole.log
 
     if(username && email && password) {
         await fetch('/api/users', {
@@ -45,6 +46,7 @@ async function loginFormHandler(event) {
         })
         
         if(response.ok) {
+            console.log("It's good!")
             document.location.replace('/');
         } else {
             alert(response.statusText);
