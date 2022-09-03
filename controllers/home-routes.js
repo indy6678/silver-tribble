@@ -33,6 +33,10 @@ router.get("/", (req, res) => {
       });
   });
 
+  // login route
+  router.get('/login', (req, res) => {
+    res.render('login');
+  })
 
 // GET to show an individual user by id
 // router.get("/:id", (req, res) => {
