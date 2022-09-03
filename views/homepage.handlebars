@@ -1,9 +1,7 @@
-
-
-<div>
-        <p></p>
-        <span></span>
-    </div>
-    <footer>
-        <p>Done!</p>
-    </footer>
+<ol>
+    {{#each sites as |site|}}
+    <li>
+        {{>site-info site}}
+    </li>
+    {{/each}}
+<ol>

@@ -3,10 +3,35 @@ const { User, Site } = require("../models");
 
 // const sequelize = require('../config/connection')
 
-// test route for config validation
-router.get('/', (req, res) => {
-    res.send('<h1>Here we are!</h1>');
-})
+// test route for configuration validation
+// router.get('/', (req, res) => {
+//     res.send('<h1>Here we are!</h1>');
+// })
+
+// GET to show all websites
+router.get("/", (req, res) => {
+    Site.findAll({
+      attributes: ["id", "website",],
+      include:{
+        model: User,
+        attributes: ['username'],
+      },
+    })
+      .then((dbSiteData) => {
+        // console.log(dbSiteData);
+        // serialize the data
+        const sites = dbSiteData.map(site=> site.get({ plain: true}));
+        // passes a single site object into homepage template
+        res.render('homepage', {
+            sites,
+        })
+        // res.json(dbSiteData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).send(err);
+      });
+  });
 
 
 // GET to show an individual user by id

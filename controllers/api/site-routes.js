@@ -6,9 +6,9 @@ router.get("/", (req, res) => {
     Site.findAll({
       attributes: ["id", "website"],
     })
-      .then((dbUserData) => {
+      .then((dbSiteData) => {
         // console.log(dbUserData);
-        res.json(dbUserData);
+        res.json(dbSiteData);
       })
       .catch((err) => {
         res.status(500).json(err);
