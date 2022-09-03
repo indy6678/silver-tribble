@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
       },
     })
       .then((dbSiteData) => {
-        // console.log(dbSiteData);
+        console.log(dbSiteData);
         // serialize the data
         const sites = dbSiteData.map(site=> site.get({ plain: true}));
         // passes a single site object into homepage template
