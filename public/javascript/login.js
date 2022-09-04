@@ -1,4 +1,4 @@
-const { response } = require("express");
+// const { response } = require("express");
 
 async function signupFormHandler(event) {
     event.preventDefault();
@@ -6,10 +6,9 @@ async function signupFormHandler(event) {
     const username = document.querySelector('#un-signup').value.trim();
     const email = document.querySelector('#e-signup').value.trim();
     const password = document.querySelector('#pw-signup').value.trim();
-    functionconsole.log
 
     if(username && email && password) {
-        await fetch('/api/users', {
+        const response = await fetch('/api/users', {
             method: 'post',
             body: JSON.stringify({
                 username,
@@ -22,12 +21,12 @@ async function signupFormHandler(event) {
         if(response.ok) {
             console.log('Eureka!')
         } else {
-            alert('response.statusText');
+            alert(response.statusText);
         }
     }
 }
 
-document.querySelector('.login').addEventListener('submit',signupFormHandler);
+document.querySelector('.signup').addEventListener('submit',signupFormHandler);
 
 async function loginFormHandler(event) {
     event.preventDefault();
@@ -36,7 +35,7 @@ async function loginFormHandler(event) {
     const password = document.querySelector('#pw-login').value.trim();
 
     if(email && password) {
-        await fetch('/api/users/login', {
+        const response = await fetch('/api/users/login', {
             method: 'post',
             body: JSON.stringify({
                 email,
@@ -54,4 +53,4 @@ async function loginFormHandler(event) {
     }
 }
 
-document.querySelector('.login').addEventListener('submit', loginFormHandler);
+document.querySelector('.signin').addEventListener('submit', loginFormHandler);

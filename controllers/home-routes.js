@@ -33,10 +33,7 @@ router.get("/", (req, res) => {
       });
   });
 
-  // login route
-  router.get('/login', (req, res) => {
-    res.render('login');
-  })
+  
 
 // GET to show an individual user by id
 // router.get("/:id", (req, res) => {
@@ -92,5 +89,14 @@ router.get("/", (req, res) => {
 //         res.status(500).json(err);
 //     })
 // })
+
+// login route
+router.get('/login', (req, res) => {
+  if(req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('login');
+})
 
 module.exports = router;
