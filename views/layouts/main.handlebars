@@ -15,7 +15,11 @@
                 <a href="/">Blocktivity</a>
             </h1>
             <nav>
-                <a href="/login">login</a>
+                {{!-- {{#if loggedIn}} --}}
+                <button id="logout" class="btn-no-style">Sign Out</button>
+                {{!-- {{else}} --}}
+                <a href="/login">Sign In</a>
+                {{!-- {{/if}} --}}
             </nav>
         </header>
     </div>
@@ -23,8 +27,10 @@
         {{{body}}}
     </main>
     <footer>
-        <p>Done!</p>
+     
     </footer>
+    <script src="/javascript/logout.js"></script>
+    <script src="/javascript/login.js"></script>
 
 </body>
 

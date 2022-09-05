@@ -10,12 +10,9 @@ const { User, Site } = require("../models");
 
 // GET to show all websites
 router.get("/", (req, res) => {
+  console.log(req.session)
     Site.findAll({
       attributes: ["id", "website",],
-      include:{
-        model: User,
-        attributes: ['username'],
-      },
     })
       .then((dbSiteData) => {
         console.log(dbSiteData);

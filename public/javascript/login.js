@@ -3,12 +3,12 @@
 async function signupFormHandler(event) {
     event.preventDefault();
 
-    const username = document.querySelector('#un-signup').value.trim();
-    const email = document.querySelector('#e-signup').value.trim();
-    const password = document.querySelector('#pw-signup').value.trim();
+    const username = document.querySelector('#un-create').value.trim();
+    const email = document.querySelector('#email-create').value.trim();
+    const password = document.querySelector('#pw-create').value.trim();
 
     if(username && email && password) {
-        const response = await fetch('/api/users', {
+        const response = await fetch(`/api/users`, {
             method: 'post',
             body: JSON.stringify({
                 username,
@@ -19,7 +19,8 @@ async function signupFormHandler(event) {
         })
         
         if(response.ok) {
-            console.log('Eureka!')
+            alert("You're signed up!");
+            document.location.replace('/');
         } else {
             alert(response.statusText);
         }
@@ -31,11 +32,11 @@ document.querySelector('.signup').addEventListener('submit',signupFormHandler);
 async function loginFormHandler(event) {
     event.preventDefault();
 
-    const email = document.querySelector('#e-login').value.trim();
-    const password = document.querySelector('#pw-login').value.trim();
+    const email = document.querySelector('#email-signin').value.trim();
+    const password = document.querySelector('#pw-signin').value.trim();
 
     if(email && password) {
-        const response = await fetch('/api/users/login', {
+        const response = await fetch(`/api/users/login`, {
             method: 'post',
             body: JSON.stringify({
                 email,
@@ -45,7 +46,6 @@ async function loginFormHandler(event) {
         })
         
         if(response.ok) {
-            console.log("It's good!")
             document.location.replace('/');
         } else {
             alert(response.statusText);
