@@ -22,4 +22,4 @@ async function newSiteFormHandler(event) {
 
 document
   .querySelector(".new-site")
-  .addEventListener("submit", newSiteFormHandler());
+  .addEventListener("submit", newSiteFormHandler);
