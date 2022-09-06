@@ -13,6 +13,7 @@ router.get("/", (req, res) => {
     .catch((err) => {
       res.status(500).json(err);
     });
+
 });
 
 // GET to show an individual user by id
@@ -68,6 +69,46 @@ router.delete('/:id', (req, res) => {
         // console.log(err);
         res.status(500).json(err);
     })
+})
+
+// login route
+router.post('/login', (req, res) => {
+  User.findOne({
+    where: {
+      email: req.body.email
+    }
+  }).then(dbUserData => {
+    if(!dbUserData) {
+      res.status(400).json({ message: 'No user available with that email address!'})
+      return;
+    }
+
+    const validPassword = dbUserData.checkPassword(req.body.password);
+
+    if(!validPassword) {
+      res.status(400).json({ message: 'Incorrect password!'});
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.email = dbUserData.email;
+      req.session.loggedIn = true;
+
+      res.json({ user: dbUserData, message: 'Your are now logged in!'});
+    });
+  });
+});
+
+// logout route
+router.post('/logout', (req, res) => {
+  if(req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
 })
 
 module.exports = router;
