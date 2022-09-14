@@ -7,7 +7,7 @@ img{
    max-height: 150px;
    display: flex;
    margin: 0 auto;
-   position: relative; right: -875px; top: 10px;
+   position: fixed; left: 860px;
 
 }
 
@@ -18,18 +18,23 @@ margin: 100px auto;
 body {
     background: #ffffff;
     display: flex;
+    position: fixed;
+    background: #dddddd;
+    margin: 24px;
   }
   
-  .container {
-    margin: 200px auto;
+  div.container {
     background: white;
     height: 30px;
     border-radius: 30px;
     padding: 10px 20px;
-    display: flex;
+    display: inline-block;
     align-items: center;
     cursor: pointer;
     box-shadow: 0 0 25px 0 rgb(218, 215, 215);
+    display: flex;
+    margin: 0 auto;
+    position: fixed; top: 275px; left: 780px;
   }
   
   .container .input {
@@ -47,18 +52,6 @@ body {
     font-weight: bold;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: larger;
-  }
-  .timer {
-    position: relative; right: 550px; top: 210px;
-    display: inline-flex;
-    padding: 4px 6px;
-    text-decoration: none;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: bold;
-    border-radius: 10px;
-    background: black;
-    height: 20px;
-    color: #ffffff;
   }
 input[type="text"]{
   width: 250px;
@@ -80,9 +73,45 @@ input[type="text"]{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   resize: none;
 }
+div.timer {
+  font-family: sans-serif;
+  display: inline-block;
+  padding: 24px 32px;
+  border-radius: 30px;
+  background: white;
+  position: fixed; left: 1250px; top: 260px;
+  height: 40px;
+}
 
+.timer {
+  font-family: sans-serif;
+  display: inline-block;
+  padding: 24px 32px;
+  border-radius: 30px;
+  background: white;
+  position: fixed;
+}
 
+.timer__part {
+  font-size: 36px;
+  font-weight: bold;
+}
 
+.timer__btn {
+  width: 50px;
+  height: 50px;
+  margin-left: 16px;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  background: #8208e6;
+  cursor: pointer;
+}
 
-  
+.timer__btn--start {
+  background: #00b84c;
+}
 
+.timer__btn--stop {
+  background: #ff0256;
+}

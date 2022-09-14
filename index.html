@@ -7,10 +7,28 @@
     <title>Blocktivity</title>
     <link rel="stylesheet" href="./assets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="script.js" defer></script>
+    <script type = "text/javascript">  
+        function fun() {  
+            alert ("Instagram.com is now blocked."); 
+        }
+  </script> 
 </head>
 
+
 <body>
+    <div class="timer">
+        <span class="timer__part timer__part--minutes">00</span>
+        <span class="timer__part">:</span>
+        <span class="timer__part timer__part--seconds">00</span>
+        <button type="button" class="timer__btn timer__btn--control timer__btn--start">
+            <span class="material-icons">play_arrow</span>
+        </button>
+        <button type="button" class="timer__btn timer__btn--reset">
+            <span class="material-icons">timer</span>
+        </button>
+    </div>
     <header>
         <h1>
             <img src="./images/stop-sign-png-27208 (1).png">
@@ -21,16 +39,17 @@
         <form autocomplete="off"></form>
         <ul class="list"></ul>
         <a class="seac" class="search-btn">
-          <i class="fas fa-search"></i>
+          <i class="fas fa-search" onclick = "fun();" ></i>
         </a>
     </div>
-    <p class="text1">Blocked Sites </p>
-    <a href="#" class="timer">Set Timer</a>
-
-
-</body>
+    
+   
 
 
 
 </body>
+
+
+
+
 </html>
