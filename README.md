@@ -1,2 +1,0 @@
-# silver-tribble
-productivity tracker
