@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blocktivity</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <script type = "text/javascript">  
+        function fun() {  
+            alert ("Instagram.com is now blocked."); 
+        }
+  </script> 
+</head>
+
+
+<body>
+    <div class="timer">
+        <span class="timer__part timer__part--minutes">00</span>
+        <span class="timer__part">:</span>
+        <span class="timer__part timer__part--seconds">00</span>
+        <button type="button" class="timer__btn timer__btn--control timer__btn--start">
+            <span class="material-icons">play_arrow</span>
+        </button>
+        <button type="button" class="timer__btn timer__btn--reset">
+            <span class="material-icons">timer</span>
+        </button>
+    </div>
+    <header>
+        <h1>
+            <img src="./images/stop-sign-png-27208 (1).png">
+        </h1>
+    </header>
+    <div class="container">
+        <input type="text" name="search" placeholder="Insert a web address (ex: Instagram.com)" id="input" />
+        <form autocomplete="off"></form>
+        <ul class="list"></ul>
+        <a class="seac" class="search-btn">
+          <i class="fas fa-search" onclick = "fun();" ></i>
+        </a>
+    </div>
+    
+   
+
+
+
+</body>
+
+
+
+
+</html>
