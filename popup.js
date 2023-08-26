@@ -4,6 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function blockWebsite() {
-const websiteUrl = document.getElementById('websiteUrl').value;
-chrome.runtime.sendMessage({ action: 'block', url: websiteUrl});
+  const websiteUrl = document.getElementById('websiteUrl').value;
+  chrome.runtime.sendMessage({ action: 'block', url: websiteUrl });
 }
