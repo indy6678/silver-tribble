@@ -4,7 +4,7 @@
   "version": "0.1.1",
   "permissions": [
     "storage",
-    "activeTab",
+    "tabs",
     "webRequest",
     "webRequestBlocking",
     "https://www.youtube.com/*",
