@@ -277,3 +277,23 @@ switch (window.location.hostname) {
     document.body.innerHTML = generateHTML("SPOTIFY");
     break;
 }
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.action === 'block') {
+    const blockedUrl = request.url;
+
+    blockWebsite(blockedUrl);
+
+    sendResponse({ message: 'Website blocked on the webpage' });
+  }
+});
+
+function blockWebsite(blockedUrl) {
+  //get the current URL of the webpage
+  const currentUrl = window.location.href;
+
+  //Check if the current URL matches the blocked URL
+  if (currentUrl.includes(blockedUrl)) {
+    document.body.innerHTML = generateSTYLES();
+  }
+}
