@@ -11,6 +11,6 @@
     "persistent": true
   },
   "icons": {
-    "48": "images/stop-sign-128.png"
+    "128": "images/stop-sign-128.png"
   }
 }
