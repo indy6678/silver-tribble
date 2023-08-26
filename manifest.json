@@ -4,7 +4,8 @@
   "version": "0.1.1",
   "permissions": [
     "webRequest",
-    "webRequestBlocking"
+    "webRequestBlocking",
+    "storage"
   ],
   "background": {
     "service_worker": "background.js"

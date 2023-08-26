@@ -28,7 +28,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       return { cancel: true };
     }
   },
-  { urls: ["<all_urls"] },
+  { urls: ["<all_urls>"] },
   ["blocking"]
 );
 
@@ -72,4 +72,3 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     });
   }
 });
-
