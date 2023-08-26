@@ -2,8 +2,6 @@
 function isBlockedUrl(url, callback) {
   chrome.storage.local.get('blockedUrls', function(result) {
     const blockedUrls = result.blockedUrls || [];
-
-    // Check if the URL matches any blocked URL in the list
     const isBlocked = blockedUrls.some(blockedUrl => url.includes(blockedUrl));
     callback(isBlocked);
   });
@@ -22,18 +20,7 @@ chrome.webRequest.onBeforeRequest.addListener(
   ["blocking"]
 );
 
-chrome.webRequest.onBeforeRequest.addListener(
-  function(details) {
-    if (isBlockedUrl(details.url)) {
-      return { cancel: true };
-    }
-  },
-  { urls: ["<all_urls>"] },
-  ["blocking"]
-);
-
-// background.js
-
+// Add the listener to handle messages from popup.js
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.action === 'block') {
     const blockedUrl = request.url;

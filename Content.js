@@ -290,6 +290,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         color: white !important;
       }
     `;
+    
+    document.body.style.backgroundColor = 'black';
 
     const style = document.createElement('style');
     style.appendChild(document.createTextNode(css));
@@ -298,4 +300,3 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     sendResponse({ message: 'Page blocked visually' });
   }
 });
-
