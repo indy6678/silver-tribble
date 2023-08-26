@@ -18,7 +18,15 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   }
 });
 
-function blockWebsite() {
-  // Your content script logic here
+
+function blockWebsite(blockedUrl) {
+  // Get the current URL of the webpage
+  const currentUrl = window.location.href;
+
+  // Check if the current URL matches the blocked URL
+  if (currentUrl.includes(blockedUrl)) {
+    // Redirect the user to a different page (e.g., a blocked page)
+    window.location.href = 'https://example.com/blocked-page';
+  }
 }
 
