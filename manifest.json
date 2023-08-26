@@ -1,8 +1,15 @@
 {
-  "manifest_version": 2,
-  "name": "Your Extension Name",
-  "version": "1.0",
-  "permissions": ["activeTab", "webRequest", "webRequestBlocking"],
+  "manifest_version": 3,
+  "name": "blocktivity",
+  "version": "0.1.1",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["Content.js"]
+    }
+  ],
+  "permissions": ["activeTab", "webRequest", "webRequestBlocking","https://www.youtube.com/*","https://www.facebook.com/*","https://www.netflix.com/*",
+"www.twitter.com/*" ],
   "browser_action": {
     "default_popup": "popup.html"
   },
@@ -13,3 +20,4 @@
     
   }
 }
+
