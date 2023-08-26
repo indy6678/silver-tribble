@@ -9,7 +9,7 @@
     "https://www.youtube.com/*",
     "https://www.facebook.com/*",
     "https://www.netflix.com/*",
-    "www.twitter.com/*"
+    "https://twitter.com/*"
   ],
   "content_scripts": [
     {

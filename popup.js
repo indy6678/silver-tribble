@@ -4,6 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function blockWebsite() {
-  const blockedUrl = 'https://www.youtube.com/';
-  chrome.runtime.sendMessage({ action: 'block', url: blockedUrl });
+const websiteUrl = document.getElementById('websiteUrl').value;
+chrome.runtime.sendMessage({ action: 'block', url: websiteUrl});
 }
