@@ -278,22 +278,24 @@ switch (window.location.hostname) {
     break;
 }
 
+// Content.js
+
+// Listen for messages from the background script
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.action === 'block') {
-    const blockedUrl = request.url;
+    // Apply custom CSS to make the page appear black
+    const css = `
+      body {
+        background-color: black !important;
+        color: white !important;
+      }
+    `;
 
-    blockWebsite(blockedUrl);
+    const style = document.createElement('style');
+    style.appendChild(document.createTextNode(css));
+    document.head.appendChild(style);
 
-    sendResponse({ message: 'Website blocked on the webpage' });
+    sendResponse({ message: 'Page blocked visually' });
   }
 });
 
-function blockWebsite(blockedUrl) {
-  //get the current URL of the webpage
-  const currentUrl = window.location.href;
-
-  //Check if the current URL matches the blocked URL
-  if (currentUrl.includes(blockedUrl)) {
-    document.body.innerHTML = generateSTYLES();
-  }
-}

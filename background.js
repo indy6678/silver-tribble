@@ -32,36 +32,44 @@ chrome.webRequest.onBeforeRequest.addListener(
   ["blocking"]
 );
 
+// background.js
+
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.action === 'block') {
     const blockedUrl = request.url;
 
-    // Request permissions on button click
-    chrome.permissions.request({ origins: [blockedUrl + '/*'] }, function(granted) {
-      if (granted) {
-        console.log('Permissions Granted:', blockedUrl);
+    // Store the blocked URL in storage
+    chrome.storage.local.get('blockedUrls', function(result) {
+      const blockedUrls = result.blockedUrls || [];
+      blockedUrls.push(blockedUrl);
 
-        // Store the blocked URL in storage
-        chrome.storage.local.get('blockedUrls', function(result) {
-          const blockedUrls = result.blockedUrls || [];
-          blockedUrls.push(blockedUrl);
-
-          // Update the storage with the new blocked URL
-          chrome.storage.local.set({ blockedUrls: blockedUrls }, function() {
-            if (chrome.runtime.lastError) {
-              console.error('Error saving to local storage:', chrome.runtime.lastError);
+      chrome.storage.local.set({ blockedUrls: blockedUrls }, function() {
+        if (chrome.runtime.lastError) {
+          console.error('Error saving to local storage:', chrome.runtime.lastError);
+        } else {
+          // Request permissions for the blocked URL
+          chrome.permissions.request({ origins: [blockedUrl + '/*'] }, function(granted) {
+            if (granted) {
+              // Send message to content script to apply visual blocking
+              chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+                const activeTab = tabs[0];
+                chrome.scripting.executeScript({
+                  target: { tabId: activeTab.id },
+                  function: function() {
+                    // Send a message to the content script
+                    chrome.runtime.sendMessage({ action: 'block' }, function(response) {
+                      console.log(response.message);
+                    });
+                  }
+                });
+              });
             } else {
-              sendResponse({ message: 'URL blocked successfully' });
+              console.log('Permissions Denied:', blockedUrl);
             }
           });
-        });
-      } else {
-        console.log('Permissions Denied:', blockedUrl);
-      }
+        }
+      });
     });
-
-    
-    // Return true to indicate that sendResponse will be used asynchronously
-    return true;
   }
 });
+
