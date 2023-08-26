@@ -40,20 +40,26 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     chrome.permissions.request({ origins: [blockedUrl + '/*'] }, function(granted) {
       if (granted) {
         console.log('Permissions Granted:', blockedUrl);
+
         // Store the blocked URL in storage
         chrome.storage.local.get('blockedUrls', function(result) {
           const blockedUrls = result.blockedUrls || [];
           blockedUrls.push(blockedUrl);
 
+          // Update the storage with the new blocked URL
           chrome.storage.local.set({ blockedUrls: blockedUrls }, function() {
-            sendResponse({ message: 'URL blocked successfully' });
+            if (chrome.runtime.lastError) {
+              console.error('Error saving to local storage:', chrome.runtime.lastError);
+            } else {
+              sendResponse({ message: 'URL blocked successfully' });
+            }
           });
         });
       } else {
-        console.log('Permissions Denied', blockedUrl);
-        sendResponse({ message: 'URL block permission denied' });
+        console.log('Permissions Denied:', blockedUrl);
       }
     });
+
     
     // Return true to indicate that sendResponse will be used asynchronously
     return true;
