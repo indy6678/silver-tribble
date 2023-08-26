@@ -1,5 +1,7 @@
 {
   "manifest_version": 3,
+  "name": "blocktivity",
+  "version": "0.1.1",
   "permissions": [
     "webRequest",
     "webRequestBlocking"
