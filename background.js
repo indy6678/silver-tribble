@@ -7,18 +7,24 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       const blockedUrls = results.blockedUrls || [];
       blockedUrls.push(blockedUrl);
 
-      chrome.storage.local.set({ blockedUrls: blockedUrls }, function() {
-        // Update permissions dynamically
-        chrome.permissions.request({ origins: [blockedUrl] }, function(granted) {
-          if (granted) {
-            console.log('Permissions Granted:', blockedUrl);
-          } else {
-            console.log('Permissions Denied', blockedUrl);
-          }
-        });
+      // Request permissions only when the user interacts with button click
+      if (blockedUrl) {
+        const button = document.getElementById('blockButton'); // Corrected element ID
+        button.addEventListener('click', function() {
+          chrome.storage.local.set({ blockedUrls: blockedUrls }, function() {
+            // Update permissions dynamically
+            chrome.permissions.request({ origins: [blockedUrl] }, function(granted) {
+              if (granted) {
+                console.log('Permissions Granted:', blockedUrl);
+              } else {
+                console.log('Permissions Denied', blockedUrl);
+              }
+            });
 
-        sendResponse({ message: 'Website blocked Successfully' });
-      });
+            sendResponse({ message: 'Website blocked Successfully' });
+          });
+        });
+      }
     });
   }
 });
