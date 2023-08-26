@@ -1,11 +1,9 @@
-const { response } = require("express");
-
 document.addEventListener('DOMContentLoaded', function() {
   const urlInput = document.getElementById('urlInput');
   const blockButton = document.getElementById('blockButton');
 
   blockButton.addEventListener('click', function() {
-    const url = urlInput.ariaValueMax.trim();
+    const url = urlInput.value.trim();
     if (isValidUrl(url)) {
       chrome.runtime.sendMessage({ action: 'block', url: url}, function(Response) {
         console.log(response.message);
