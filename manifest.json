@@ -2,7 +2,6 @@
   "manifest_version": 3,
   "name": "blocktivity",
   "version": "0.1.1",
-  "host_permissions": [ "<all_urls>" ],
   "permissions": [
     "storage",
     "tabs",
@@ -19,8 +18,9 @@
     "rule_resources": [
       {
         "id": "block_rule",
+        "enabled": true, 
         "priority": 1,
-        "path": "block_rule.json",  
+        "path": "block_rule.json",
         "action": {
           "type": "block"
         },
@@ -37,4 +37,5 @@
     }
   ]
 }
+
 
