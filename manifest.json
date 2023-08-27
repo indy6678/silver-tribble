@@ -5,18 +5,26 @@
   "permissions": [
     "storage",
     "tabs",
-    "webRequest",
-    "webRequestBlocking",
-    "https://www.youtube.com/*",
-    "https://www.facebook.com/*",
-    "https://www.netflix.com/*",
-    "https://twitter.com/*"
-  ],  
-  "background": {
-    "service_worker": "background.js"
-  },
-  "action": {
-    "default_popup": "popup.html"
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback"
+  ], 
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "block_rule",
+        "priority": 1,
+        "background": {
+          "service_worker": "background.js"
+        },
+        "action": {
+          "default_popup": "popup.html",
+          "type": "block"
+        },
+        "condition": {
+          "urlFilter": "<all_urls>"
+        }
+      }
+    ]
   },
   "content_scripts": [
     {
@@ -25,5 +33,3 @@
     }
   ]
 }
-
-
