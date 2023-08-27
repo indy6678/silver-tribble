@@ -15,13 +15,19 @@
     "default_popup": "popup.html"
   },
   "declarative_net_request": {
-    "rule_resources": [{
-        "id": "block_rule",
+    "rule_resources": [
+      {
+        "id": "rules1",
         "enabled": true,
-        "path": "block_rule.json",
+        "path": "rules.json"
+      }
+    ],
+    "rules": [
+      {
+        "id": 1,
         "priority": 1,
         "action": {
-        "type": "block"
+          "type": "block"
         },
         "condition": {
           "urlFilter": "||google.com/"
@@ -31,7 +37,9 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": [
+        "<all_urls>"
+      ],
       "js": ["content.js"]
     }
   ]
