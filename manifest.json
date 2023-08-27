@@ -15,8 +15,7 @@
     "default_popup": "popup.html"
   },
   "declarative_net_request": {
-    "rule_resources": [
-      {
+    "rule_resources": [{
         "id": "rules1",
         "enabled": true
       }
