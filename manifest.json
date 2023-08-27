@@ -6,6 +6,7 @@
     "storage",
     "tabs",
     "webRequest",
+    "declarativeNetRequest",
     "webRequestBlocking",
     "https://www.youtube.com/*",
     "https://www.facebook.com/*",
@@ -26,4 +27,3 @@
   },
   "icons": {}
 }
-
