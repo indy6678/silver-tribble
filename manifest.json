@@ -3,10 +3,15 @@
   "name": "blocktivity",
   "version": "0.1.1",
   "permissions": [
+    "storage",
+    "tabs",
     "webRequest",
     "webRequestBlocking",
-    "storage"
-  ],
+    "https://www.youtube.com/*",
+    "https://www.facebook.com/*",
+    "https://www.netflix.com/*",
+    "https://twitter.com/*"
+  ],  
   "background": {
     "service_worker": "background.js"
   },
