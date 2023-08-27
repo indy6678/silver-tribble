@@ -7,19 +7,29 @@
     "tabs",
     "declarativeNetRequest",
     "declarativeNetRequestFeedback"
-  ], 
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
   "declarative_net_request": {
     "rule_resources": [
       {
         "id": "block_rule",
         "priority": 1,
-        "rule": {
-          "action": {
-            "type": "block"
-          },
-          "condition": {
-            "urlFilter": "<all_urls>"
-          }
+        "action": {
+          "type": "block"
+        },
+        "condition": {
+          "urlFilter": "<all_urls>",
+          "domains": [
+            "youtube.com",
+            "facebook.com",
+            "netflix.com",
+            "twitter.com"
+          ]
         }
       }
     ]
@@ -29,11 +39,6 @@
       "matches": ["<all_urls>"],
       "js": ["content.js"]
     }
-  ],
-  "background": {
-    "service_worker": "background.js"
-  },
-  "action": {
-    "default_popup": "popup.html"
-  }
+  ]
 }
+
