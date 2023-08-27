@@ -1,20 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const urlInput = document.getElementById('urlInput');
   const blockButton = document.getElementById('blockButton');
-
+  
   blockButton.addEventListener('click', function() {
-    const url = urlInput.value.trim();
-    if (isValidUrl(url)) {
-      chrome.runtime.sendMessage({ action: 'block', url: url }, function(response) {
-        console.log(response.message);
-      });
-    }
+    // This code is executed in response to a user's click event
+    // Call the function that requires a user gesture
+    performBlockingAction();
   });
 });
 
-function isValidUrl(url) {
-  return url.startsWith('http://') || url.startsWith('https://');
+function performBlockingAction() {
+  // Perform the action that requires a user gesture
+  // For example, making a request to block a URL
+  chrome.runtime.sendMessage({ action: 'block', url: 'https://www.iamlilbaby.com/' });
 }
+
 
 
 
