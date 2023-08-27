@@ -19,6 +19,7 @@
       {
         "id": "block_rule",
         "priority": 1,
+        "path": "block_rule.json",  
         "action": {
           "type": "block"
         },
@@ -35,5 +36,4 @@
     }
   ]
 }
-
 
