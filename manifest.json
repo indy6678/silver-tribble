@@ -15,22 +15,15 @@
     "default_popup": "popup.html"
   },
   "declarative_net_request": {
-    "rule_resources": [
-      {
+    "rule_resources": [{
         "id": "block_rule",
         "enabled": true,
         "priority": 1,
         "action": {
-          "type": "block"
+        "type": "block"
         },
         "condition": {
-          "urlFilter": "<all_urls>",
-          "domains": [
-            "youtube.com",
-            "facebook.com",
-            "netflix.com",
-            "twitter.com"
-          ]
+          "urlFilter": "||google.com/"
         }
       }
     ]
