@@ -13,15 +13,13 @@
       {
         "id": "block_rule",
         "priority": 1,
-        "background": {
-          "service_worker": "background.js"
-        },
-        "action": {
-          "default_popup": "popup.html",
-          "type": "block"
-        },
-        "condition": {
-          "urlFilter": "<all_urls>"
+        "rule": {
+          "action": {
+            "type": "block"
+          },
+          "condition": {
+            "urlFilter": "<all_urls>"
+          }
         }
       }
     ]
@@ -31,5 +29,11 @@
       "matches": ["<all_urls>"],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
 }
