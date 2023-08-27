@@ -23,13 +23,7 @@
           "type": "block"
         },
         "condition": {
-          "urlFilter": "<all_urls>",
-          "domains": [
-            "youtube.com",
-            "facebook.com",
-            "netflix.com",
-            "twitter.com"
-          ]
+          "urlFilter": "<all_urls>"
         }
       }
     ]
@@ -41,4 +35,5 @@
     }
   ]
 }
+
 
