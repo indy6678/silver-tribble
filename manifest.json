@@ -5,8 +5,18 @@
   "permissions": [
     "storage",
     "tabs",
-    "declarativeNetRequest",
-    "declarativeNetRequestFeedback"
+    "webRequest",
+    "webRequestBlocking",
+    "https://www.youtube.com/*",
+    "https://www.facebook.com/*",
+    "https://www.netflix.com/*",
+    "https://twitter.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["Content.js"]
+    }
   ],
   "background": {
     "service_worker": "background.js"
@@ -14,31 +24,6 @@
   "action": {
     "default_popup": "popup.html"
   },
-  "declarative_net_request": {
-    "rule_resources": [{
-        "id": "rules1",
-        "enabled": true
-      }
-    ],
-    "rules": [
-      {
-        "id": 1,
-        "priority": 1,
-        "action": {
-          "type": "block"
-        },
-        "condition": {
-          "urlFilter": "||google.com/"
-        }
-      }
-    ]
-  },
-  "content_scripts": [
-    {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": ["content.js"]
-    }
-  ]
+  "icons": {}
 }
+
