@@ -1,11 +1,3 @@
-const blockButton = document.getElementById('blockButton');
-blockButton.addEventListener('click', function() {
-  const url = urlInput.value.trim();
-  if (isValidUrl(url)) {
-    chrome.runtime.sendMessage({ action: 'block', url: url });
-  }
-});
-
 document.addEventListener('DOMContentLoaded', function() {
   const urlInput = document.getElementById('urlInput');
   const blockButton = document.getElementById('blockButton');
@@ -20,10 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-
 function isValidUrl(url) {
   return url.startsWith('http://') || url.startsWith('https://');
 }
+
 
 
 

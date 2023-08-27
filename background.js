@@ -24,18 +24,23 @@ function isBlockedUrl(url, callback) {
   });
 }
 
-// Add the listener to intercept and block requests
-chrome.webRequest.onBeforeRequest.addListener(
-  function(details) {
-    isBlockedUrl(details.url, function(isBlocked) {
-      if (isBlocked) {
-        return { cancel: true };
-      }
-    });
-  },
-  { urls: ["<all_urls>"] },
-  ["blocking"]
-);
+chrome.runtime.onInstalled.addListener(function() {
+  // Add the listener to intercept and block requests
+  chrome.webRequest.onBeforeRequest.addListener(
+    function(details) {
+      isBlockedUrl(details.url, function(isBlocked) {
+        if (isBlocked) {
+          return { cancel: true };
+        }
+      });
+    },
+    { urls: ["<all_urls>"] },
+    ["blocking"]
+  );
+});
+
+// Rest of your code...
+
 
 // Add the listener to handle messages from popup.js
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
