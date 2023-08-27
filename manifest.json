@@ -18,14 +18,19 @@
     "rule_resources": [
       {
         "id": "block_rule",
-        "enabled": true, 
+        "enabled": true,
         "priority": 1,
-        "path": "block_rule.json",
         "action": {
           "type": "block"
         },
         "condition": {
-          "urlFilter": "<all_urls>"
+          "urlFilter": "<all_urls>",
+          "domains": [
+            "youtube.com",
+            "facebook.com",
+            "netflix.com",
+            "twitter.com"
+          ]
         }
       }
     ]
@@ -37,5 +42,3 @@
     }
   ]
 }
-
-
