@@ -18,8 +18,7 @@
     "rule_resources": [
       {
         "id": "rules1",
-        "enabled": true,
-        "path": "rules.json"
+        "enabled": true
       }
     ],
     "rules": [
