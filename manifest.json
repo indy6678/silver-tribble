@@ -18,6 +18,7 @@
     "rule_resources": [{
         "id": "block_rule",
         "enabled": true,
+        "path": "block_rule.json",
         "priority": 1,
         "action": {
         "type": "block"
