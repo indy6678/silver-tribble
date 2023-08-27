@@ -5,7 +5,6 @@
   "permissions": [
     "storage",
     "tabs",
-    "webRequest",
     "declarativeNetRequest",
     "https://www.youtube.com/*",
     "https://www.facebook.com/*",
