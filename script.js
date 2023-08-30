@@ -1,10 +1,6 @@
-let names = [
-   "Instagram.com",
-   "facebook.com",
-   "youtube.com",
-];
-  //Sort names in ascending order
- //Sort names in ascending order
+let names = ["Instagram.com", "facebook.com", "youtube.com"];
+//Sort names in ascending order
+//Sort names in ascending order
 let sortedNames = names.sort();
 
 //reference
@@ -58,7 +54,7 @@ class Timer {
       minutes: root.querySelector(".timer__part--minutes"),
       seconds: root.querySelector(".timer__part--seconds"),
       control: root.querySelector(".timer__btn--control"),
-      reset: root.querySelector(".timer__btn--reset")
+      reset: root.querySelector(".timer__btn--reset"),
     };
 
     this.interval = null;
@@ -141,9 +137,7 @@ class Timer {
   }
 }
 
-new Timer(
-	document.querySelector(".timer")
-);
+new Timer(document.querySelector(".timer"));
 //TIMER SECTION END
 
 //for extension
